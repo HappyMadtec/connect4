@@ -56,7 +56,7 @@ class Grid:
                 adjacent = 0
 
         # TODO: Vertical
-        for cell in range(5):
+        for cell in range(6):
 
             # for compte in self.grid[line][column]:
             print("cell = ", cell)
@@ -65,38 +65,41 @@ class Grid:
 
             print("compte = ", compte)
             if compte == color:
-                superieur += 1
+                print("hello i detect jetton")
+                superieur += 2
+                print(superieur)
                 if superieur == 4:
+                    print("Hello 4 detected")
                     print(self.grid)
                     return True
-                else:
-                    superieur = 0
+            else:
+                superieur = 0
         # TODO: Diagonal
         ValeurDiagonalPair = 0
         ValeurDiagonalImpair = 0
         for i in range(6):
             for j in range(7):
-                modulo = (i+j)%6
+                modulo = (i + j) % 6
                 if modulo % 2 == 0:
                     compte = self.grid[i][j]
                     if compte == color:
                         ValeurDiagonalPair += 1
+                        print("Hello i detect jeton diagonal \n")
+                        print(ValeurDiagonalPair)
                         if ValeurDiagonalPair == 4:
                             return True
-                        else:
-                            ValeurDiagonalPair = 0
+                else:
+                    ValeurDiagonalPair = 0
                 if modulo % 2 == 1:
                     compte = self.grid[i][j]
                     if compte == color:
                         ValeurDiagonalImpair += 1
                         if ValeurDiagonalImpair == 4:
                             return True
-                        else:
-                            ValeurDiagonalImpair = 0
+                else:
+                    ValeurDiagonalImpair = 0
 
         return False
-
-
 
     def tie(self) -> bool:
         """Check if the grid is full."""
@@ -104,12 +107,11 @@ class Grid:
         for i in range(6):
             for j in range(7):
                 res = self.grid[i][j]
-                if res != Cell.EMPTY:
-                    print(type(i))
-                    print((type(j)))
-                    if not self.win(i, j):
-                        return True
 
+                if not self.win(i, j):
+                    return True
+
+        return False
 
 
 class Player:

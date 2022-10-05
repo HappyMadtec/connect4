@@ -60,7 +60,7 @@ class TestGame(unittest.TestCase):
             grid.grid[lig_col][lig_col] = Cell.A
             grid.grid[lig_col][lig_col + 1] = Cell.B if lig_col == 0 else Cell.A
             print(grid)
-        #self.assertTrue(grid.win(0, 0))
+        self.assertTrue(grid.win(0, 0))
         print(Grid)
         self.assertFalse(grid.win(0, 1))
         print(Grid)
