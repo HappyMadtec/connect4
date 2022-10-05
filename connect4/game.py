@@ -67,36 +67,49 @@ class Grid:
             if compte == color:
                 superieur += 1
                 if superieur == 4:
+                    print(self.grid)
                     return True
                 else:
                     superieur = 0
         # TODO: Diagonal
-        for i in range(5):
-            for j in range(6):
-                compte = self.grid[i][j]
-
-                if i <= 6 and j <= 7:
+        ValeurDiagonalPair = 0
+        ValeurDiagonalImpair = 0
+        for i in range(6):
+            for j in range(7):
+                modulo = (i+j)%6
+                if modulo % 2 == 0:
+                    compte = self.grid[i][j]
                     if compte == color:
-                        superieur += 1
-                        if superieur == 4:
-                            print("Diagonal Win")
+                        ValeurDiagonalPair += 1
+                        if ValeurDiagonalPair == 4:
                             return True
                         else:
-                            superieur = 0
+                            ValeurDiagonalPair = 0
+                if modulo % 2 == 1:
+                    compte = self.grid[i][j]
+                    if compte == color:
+                        ValeurDiagonalImpair += 1
+                        if ValeurDiagonalImpair == 4:
+                            return True
+                        else:
+                            ValeurDiagonalImpair = 0
 
         return False
+
+
 
     def tie(self) -> bool:
         """Check if the grid is full."""
         # TODO
-        for i in range(5):
-            for j in range(6):
-                res = self.win(i, j)
-                if res == True:
-                    print("Nobody wins! It's a Tie!!")
-            return True
-        else:
-            return False
+        for i in range(6):
+            for j in range(7):
+                res = self.grid[i][j]
+                if res != Cell.EMPTY:
+                    print(type(i))
+                    print((type(j)))
+                    if not self.win(i, j):
+                        return True
+
 
 
 class Player:
