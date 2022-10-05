@@ -44,6 +44,7 @@ class Grid:
         """Check if the Cell at "line" / "column" is part of 4 Cells from the same
         player in a horizontal / vertical / diagonal line."""
         adjacent = 0
+        superieur = 0
         color = self.grid[line][column]
         # Horizontal
         for cell in self.grid[line]:
@@ -55,13 +56,47 @@ class Grid:
                 adjacent = 0
 
         # TODO: Vertical
+        for cell in range(5):
+
+            # for compte in self.grid[line][column]:
+            print("cell = ", cell)
+
+            compte = self.grid[cell][column]
+
+            print("compte = ", compte)
+            if compte == color:
+                superieur += 1
+                if superieur == 4:
+                    return True
+                else:
+                    superieur = 0
         # TODO: Diagonal
+        for i in range(5):
+            for j in range(6):
+                compte = self.grid[i][j]
+
+                if i <= 6 and j <= 7:
+                    if compte == color:
+                        superieur += 1
+                        if superieur == 4:
+                            print("Diagonal Win")
+                            return True
+                        else:
+                            superieur = 0
+
         return False
 
     def tie(self) -> bool:
         """Check if the grid is full."""
         # TODO
-        return False
+        for i in range(5):
+            for j in range(6):
+                res = self.win(i, j)
+                if res == True:
+                    print("Nobody wins! It's a Tie!!")
+            return True
+        else:
+            return False
 
 
 class Player:
@@ -109,4 +144,5 @@ class Game:
         the token stops, and check if this was a winning move."""
         column = player.play(self.grid)
         line = self.grid.place(column, cell)
+        print(Grid)
         return self.grid.win(line, column)
