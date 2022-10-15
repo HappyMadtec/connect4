@@ -77,27 +77,44 @@ class Grid:
         # TODO: Diagonal
         ValeurDiagonalPair = 0
         ValeurDiagonalImpair = 0
+        compteur = 0
         for i in range(6):
             for j in range(7):
-                modulo = (i + j) % 6
-                if modulo % 2 == 0:
-                    compte = self.grid[i][j]
-                    if compte == color:
-                        ValeurDiagonalPair += 1
-                        print("Hello i detect jeton diagonal \n")
-                        print(ValeurDiagonalPair)
-                        if ValeurDiagonalPair == 4:
+                compte = self.grid[i][j]
+                if compte == color:
+                    compteur +=1
+                    contour = 0
+                    while (contour < 4):
+                        if ((j + 1) < 7 and (i + 1) < 6 and self.grid[i + 1][j + 1] == color):
+                            compteur += 1
+                        else:
+                            compteur = 0
+                            break
+                        contour += 1
+
+                        if compteur == 4:
                             return True
-                else:
-                    ValeurDiagonalPair = 0
-                if modulo % 2 == 1:
-                    compte = self.grid[i][j]
-                    if compte == color:
-                        ValeurDiagonalImpair += 1
-                        if ValeurDiagonalImpair == 4:
+                    while (contour < 4):
+                        if ((j + 1) < 7 and (i - 1) < 0 and self.grid[i - 1][j + 1] == color):
+                            compteur += 1
+                        else:
+                            compteur = 0
+                            break
+                        contour += 1
+
+                        if compteur == 4:
                             return True
-                else:
-                    ValeurDiagonalImpair = 0
+                    while (i < 4):
+                        if ((j + 1) < 6 and (i - 1) < 7 and self.grid[i + 1][j - 1] == color):
+                            compteur += 1
+                        else:
+                            compteur = 0
+                            break
+                        contour += 1
+                        if compteur == 4:
+                            return True
+                        else:
+                             compteur = 0
 
         return False
 
