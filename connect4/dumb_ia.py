@@ -9,6 +9,7 @@ class DumbIA(Player):
     """IA which play on the column of the first possible empty cell it finds."""
 
     def play(self, grid: Grid) -> int:
+        val = 0
         for i in range(6):
             for j in range(7):
                 cell = grid.grid[i][j]
@@ -16,7 +17,11 @@ class DumbIA(Player):
                 # regarder definition self
                 if cell == Cell.EMPTY:
                     print(grid)
-                    return j
+                    val = j
+
+                    return val
+
+
 
 #if i want to make the file exectutable
 
