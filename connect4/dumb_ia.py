@@ -22,7 +22,6 @@ class DumbIA(Player):
                     return val
 
 
-
 #if i want to make the file exectutable
 
 # i will have to write the follwoing code to make it work as soon as i launch in the interpruter if i am working on linux
