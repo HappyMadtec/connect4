@@ -1,5 +1,6 @@
 import sys
 import os.path
+
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 
 from connect4.game import Grid, Player, Cell
@@ -19,7 +20,7 @@ class CheaterB(Player):
                     i += 1
                     for i in range(5):
                         print(Grid)
-                        grid.place(i,Cell.B)
+                        grid.place(i, Cell.B)
                         print(Grid)
                         return i
                 """elif var == Cell.B:
@@ -27,26 +28,3 @@ class CheaterB(Player):
         print(grid)
         if i == j:
             return i
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
