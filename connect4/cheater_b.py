@@ -18,15 +18,14 @@ class CheaterB(Player):
                 var = grid.grid[cell][cell2]
                 if var == Cell.A:
                     i += 1
-                    for i in range(5):
+                    for i in range(4+i):
                         print(Grid)
                         grid.place(i, Cell.B)
                         print(Grid)
                         return i
                 
-        print(grid)
-        if i == j:
-            return i
+
+
 
     """def play(self, grid: Grid) -> int:
         #win horizontal
