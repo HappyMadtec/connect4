@@ -68,6 +68,7 @@ class Grid:
                 print("hello i detect jetton")
                 superieur += 2
                 print(superieur)
+                print(self.grid)
                 if superieur == 4:
                     print("Hello 4 detected")
                     print(self.grid)
