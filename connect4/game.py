@@ -80,7 +80,7 @@ class Grid:
         compteur = 0
         # for i in range(4):
         #   if (line+n) > 6 and (column+n) >6 and grid[line+n][column+n] == compte:
-
+        jeton = 0
         # First direction upper right
         for n in range(5):
             if (
@@ -98,11 +98,7 @@ class Grid:
         print("jetonnn", jeton)
         # Second direction down left, but still in the same diagonal
         for n in range(5):
-            if (
-                line - n > -1
-                and column - n > -1
-                and self.grid[line - n][column - n] == color
-            ):
+            if (line - n > -1 and column - n > -1 and self.grid[line - n][column - n] == color):
                 jeton += 1
                 print("jeton2 =", jeton)
                 print("n2 =", n)
