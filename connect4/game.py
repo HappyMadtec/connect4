@@ -80,7 +80,7 @@ class Grid:
         compteur = 0
         # for i in range(4):
         #   if (line+n) > 6 and (column+n) >6 and grid[line+n][column+n] == compte:
-        jeton = 0
+
         # First direction upper right
         for n in range(5):
             if (
@@ -116,7 +116,7 @@ class Grid:
             if jeton == 4:
                 return True
         # Check the other diagonal, in the upper left direction
-        jeton = 0
+
         for n in range(5):
             if (
                 line + n < 6
