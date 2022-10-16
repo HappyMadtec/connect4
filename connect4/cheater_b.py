@@ -11,7 +11,7 @@ class CheaterB(Player):
 
     def play(self, grid: Grid) -> int:
         """win horizontal"""
-     i = 0
+        i = 0
         j = 0
         for cell in range(grid.lines):
             for cell2 in range(grid.columns):
