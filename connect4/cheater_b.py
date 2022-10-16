@@ -22,7 +22,7 @@ class CheaterB(Player):
                         print(Grid)
                         grid.place(i, Cell.B)
                         print(Grid)
-                        return i
+        return i
                 
 
 
