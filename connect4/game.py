@@ -78,57 +78,100 @@ class Grid:
         ValeurDiagonalPair = 0
         ValeurDiagonalImpair = 0
         compteur = 0
-        for i in range(6):
-            for j in range(7):
-                compte = self.grid[i][j]
-                if compte == color:
-                    compteur +=1
-                    contour = 0
-                    while (contour < 4):
-                        if ((j + 1) < 7 and (i + 1) < 6 and self.grid[i + 1][j + 1] == color):
-                            compteur += 1
-                        else:
-                            compteur = 0
-                            break
-                        contour += 1
-
-                        if compteur == 4:
-                            return True
-                    while (contour < 4):
-                        if ((j + 1) < 7 and (i - 1) < 0 and self.grid[i - 1][j + 1] == color):
-                            compteur += 1
-                        else:
-                            compteur = 0
-                            break
-                        contour += 1
-
-                        if compteur == 4:
-                            return True
-                    while (i < 4):
-                        if ((j + 1) < 6 and (i - 1) < 7 and self.grid[i + 1][j - 1] == color):
-                            compteur += 1
-                        else:
-                            compteur = 0
-                            break
-                        contour += 1
-                        if compteur == 4:
-                            return True
-                        else:
-                             compteur = 0
+        # for i in range(4):
+        #   if (line+n) > 6 and (column+n) >6 and grid[line+n][column+n] == compte:
+        jeton = 0
+        # First direction upper right
+        for n in range(5):
+            if (
+                line + n < 6
+                and column + n < 7
+                and self.grid[line + n][column + n] == color
+            ):
+                jeton += 1
+                print("jeton1 =", jeton)
+            else:
+                jeton = 0
+                break
+            if jeton == 4:
+                return True
+        print("jetonnn", jeton)
+        # Second direction down left, but still in the same diagonal
+        for n in range(5):
+            if (
+                line - n > -1
+                and column - n > -1
+                and self.grid[line - n][column - n] == color
+            ):
+                jeton += 1
+                print("jeton2 =", jeton)
+                print("n2 =", n)
+                print("line-n2 =", line - n)
+                print("column+n2 =", column + n)
+                print("line2 =", line)
+                print("column2 =", column)
+            else:
+                jeton = 0
+                break
+            if jeton == 4:
+                return True
+        # Check the other diagonal, in the upper left direction
+        jeton = 0
+        for n in range(5):
+            if (
+                line + n < 6
+                and column - n > -1
+                and self.grid[line + n][column - n] == color
+            ):
+                jeton += 1
+                print("jeton3 =", jeton)
+                print("n3 =", n)
+                print("line-n3 =", line - n)
+                print("column+n3 =", column + n)
+                print("line3 =", line)
+                print("column3 =", column)
+            else:
+                jeton = 0
+                break
+            if jeton == 4:
+                return True
+            # Second direction down left, but still in the same diagonal
+        for n in range(5):
+            if (
+                line - n > -1
+                and column + n < 7
+                and self.grid[line - n][column + n] == color
+            ):
+                jeton += 1
+                print("jeton4 =", jeton)
+                print("n4 =", n)
+                print("line-n4 =", line - n)
+                print("column+n4 =", column + n)
+                print("line4 =", line)
+                print("column4 =", column)
+            else:
+                jeton = 0
+                break
+            if jeton == 4:
+                return True
+        return False
 
         return False
 
     def tie(self) -> bool:
         """Check if the grid is full."""
         # TODO
-        for i in range(6):
-            for j in range(7):
-                res = self.grid[i][j]
-
-                if not self.win(i, j):
-                    return True
-
-        return False
+        i = 0
+        for cell in range(7):
+            var = self.grid[5][cell]
+            if var == Cell.A or var == Cell.B:
+                i += 1
+            else:
+                i = 0
+            if i == 6:
+                return True
+            elif i == 0:
+                return False
 
 
 class Player:
